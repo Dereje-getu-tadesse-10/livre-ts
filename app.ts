@@ -10,13 +10,31 @@ class Book {
 
     addBookTolist(book : Book){
         const bookList = document.querySelector('.book-list') as HTMLTableElement;
-        const tr = document.createElement('tr');
+        const tr = document.createElement('tr') as HTMLTableRowElement;
         tr.innerHTML = `
             <td>${book.titre}</td>
             <td>${book.auteur}</td>
             <td>${book.annee}</td>
             td><td><button class="delete">X</button></td>
         `;
+
+        bookList.appendChild(tr);
     }
 
 }
+
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const titre = (document.querySelector('#title') as HTMLInputElement);
+    const auteur = (document.querySelector('#auteur') as HTMLInputElement);
+    const annee = (document.querySelector('#annee') as HTMLInputElement);
+
+    let titleVal: string = titre.nodeValue!;
+    let authorVal: string = auteur.nodeValue!;
+    let yearVal: number = parseInt(annee.nodeValue!);
+
+    const book = new Book(titleVal, authorVal, yearVal);
+    
+    book.addBookTolist(book);   
+});
