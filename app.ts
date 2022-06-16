@@ -21,13 +21,29 @@ class Book {
         bookList.appendChild(tr);
     }
 
+    clearForm(){
+        form.reset();
+    }
+
+    showAlert(message: string, className: string){
+        const div = document.createElement('div');
+        div.className = `alert ${className}`;
+        div.appendChild(document.createTextNode(message));
+        const container = document.querySelector('.container') as HTMLElement;
+        container.insertBefore(div, form);
+        setTimeout(() => {
+            document.querySelector('.alert')!.remove();
+        }
+        , 3000);
+    } 
+
 }
 
 
 class Iterface {
     deleteBook(target : HTMLElement){
        if(target.className === 'delete'){
-        target.parentElement.parentElement.remove(); 
+        target.parentElement.parentElement.remove();
     }
 }
 }
@@ -43,7 +59,16 @@ form.addEventListener('submit', (e) => {
     let yearVal: number = parseInt(annee.value);
 
     const book = new Book(titleVal, authorVal, yearVal);
-    book.addBookTolist(book);   
+
+
+    if(titleVal === '' || authorVal === '' || yearVal === 0){
+        book.showAlert('Les champs !!!!', 'error');
+    } else {
+        book.addBookTolist(book);
+        book.clearForm();
+        book.showAlert('Le livre a été ajouté', 'success');
+    }
+
 });
 
 allBooks.forEach(book => {
