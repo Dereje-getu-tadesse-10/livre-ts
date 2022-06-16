@@ -1,2 +1,3 @@
 "use strict";
-console.log('Hello World');
+const allBooks = document.querySelectorAll('.book-list');
+const form = document.querySelector('.book');
