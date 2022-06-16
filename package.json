@@ -1,0 +1,20 @@
+{
+  "name": "livre-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc --init"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dereje-getu-tadesse-10/livre-ts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dereje-getu-tadesse-10/livre-ts/issues"
+  },
+  "homepage": "https://github.com/Dereje-getu-tadesse-10/livre-ts#readme"
+}
