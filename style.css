@@ -72,3 +72,9 @@ th{
 td{
     text-align: center;
 }
+
+.delete{
+    background: #f44336;
+    color: white;
+    padding: 10px 20px;
+}

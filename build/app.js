@@ -17,9 +17,16 @@ class Book {
             <td>${book.titre}</td>
             <td>${book.auteur}</td>
             <td>${book.annee}</td>
-            td><td><button class="delete">X</button></td>
+            <td><td><button class="delete">X</button></td>
         `;
         bookList.appendChild(tr);
+    }
+}
+class Iterface {
+    deleteBook(target) {
+        if (target.className === 'delete') {
+            target.parentElement.parentElement.remove();
+        }
     }
 }
 form.addEventListener('submit', (e) => {
@@ -27,9 +34,16 @@ form.addEventListener('submit', (e) => {
     const titre = document.querySelector('#title');
     const auteur = document.querySelector('#auteur');
     const annee = document.querySelector('#annee');
-    let titleVal = titre.nodeValue;
-    let authorVal = auteur.nodeValue;
-    let yearVal = parseInt(annee.nodeValue);
+    let titleVal = titre.value;
+    let authorVal = auteur.value;
+    let yearVal = parseInt(annee.value);
     const book = new Book(titleVal, authorVal, yearVal);
     book.addBookTolist(book);
+});
+allBooks.forEach(book => {
+    book.addEventListener('click', (e) => {
+        const target = e.target;
+        const iterface = new Iterface();
+        iterface.deleteBook(target);
+    });
 });
